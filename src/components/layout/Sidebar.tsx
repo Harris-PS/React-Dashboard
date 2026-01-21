@@ -23,15 +23,6 @@ const Sidebar = () => {
           ))}
         </nav>
       </div>
-      <div className="p-6 border-t border-slate-100">
-        <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-4 text-white shadow-lg shadow-indigo-200">
-          <p className="text-sm font-medium opacity-80">Pro Plan</p>
-          <p className="font-bold mb-3">Upgrade for more insights</p>
-          <button className="w-full bg-white/20 hover:bg-white/30 py-2 rounded-lg text-sm font-semibold transition-colors backdrop-blur-md">
-            Go Pro
-          </button>
-        </div>
-      </div>
     </aside>
   );
 };
