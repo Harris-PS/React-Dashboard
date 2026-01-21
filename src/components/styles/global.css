@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: #f5f5f5;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logo img {
+  max-width: 100%;
+  height: clamp(30px, 5vh, 50px);
+  object-fit: contain;
+}
+
+.navlist {
+  display: flex;
+  list-style: none;
+}
+
+.navitem {
+  margin: 0 1rem;
+}

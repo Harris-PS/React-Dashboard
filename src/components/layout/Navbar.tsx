@@ -1,17 +1,17 @@
-function Navbar(){
-  return(
-    
+function Navbar() {
+  return (
+
     <nav className="navbar">
       <div className="logo">
-        <img src="" alt="" />
+        <img src="/logo.png" alt="Expense Tracker Logo" />
       </div>
-      <ul>
-        <li>Home</li>
-        <li>Login</li>
-        <li>Sign Up</li> 
+      <ul className="navlist">
+        <li className="navitem">Home</li>
+        <li className="navitem">Login</li>
+        <li className="navitem">Sign Up</li>
       </ul>
     </nav>
-    
+
   )
 }
 
