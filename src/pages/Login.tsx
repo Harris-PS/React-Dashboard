@@ -1,6 +1,35 @@
+import { useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
 import LoginForm from "../components/forms/LoginForm";
+import GoogleOAuthButton from "../components/auth/GoogleOAuthButton";
 
 function Login() {
+  const { isAuthenticated: auth0Authenticated, user: auth0User, isLoading } = useAuth0();
+  const navigate = useNavigate();
+  const loginWithOAuth = useAuthStore((state) => state.loginWithOAuth);
+
+  // Handle Auth0 authentication
+  useEffect(() => {
+    if (auth0Authenticated && auth0User) {
+      loginWithOAuth({
+        email: auth0User.email || '',
+        name: auth0User.name || 'User',
+        picture: auth0User.picture,
+      });
+      navigate('/');
+    }
+  }, [auth0Authenticated, auth0User, loginWithOAuth, navigate]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
       {/* Animated background elements */}
@@ -24,6 +53,16 @@ function Login() {
             <p className="text-white/80 text-sm md:text-base">Sign in to access your dashboard</p>
           </div>
 
+          {/* Google OAuth Button */}
+          <GoogleOAuthButton />
+
+          {/* Divider */}
+          <div className="flex items-center gap-4 my-6">
+            <div className="flex-1 h-px bg-white/20"></div>
+            <span className="text-white/60 text-sm font-medium">OR</span>
+            <div className="flex-1 h-px bg-white/20"></div>
+          </div>
+
           {/* Login Form */}
           <LoginForm />
 
@@ -39,7 +78,7 @@ function Login() {
 
           {/* Demo credentials hint */}
           <div className="mt-8 pt-6 border-t border-white/20">
-            <p className="text-white/60 text-xs text-center mb-2">Demo Credentials:</p>
+            <p className="text-white/60 text-xs text-center mb-2">Demo Credentials (Email/Password):</p>
             <div className="bg-white/5 rounded-xl p-3 text-center">
               <p className="text-white/90 text-sm font-mono">test@gmail.com</p>
               <p className="text-white/90 text-sm font-mono">123456</p>

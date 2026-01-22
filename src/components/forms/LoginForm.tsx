@@ -1,8 +1,10 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { loginAction } from "../../actions/auth.actions";
 
-const initialState = { error: null };
+const initialState = { error: null, success: false };
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -34,6 +36,14 @@ function SubmitButton() {
 
 export default function LoginForm() {
   const [state, formAction] = useActionState(loginAction, initialState);
+  const navigate = useNavigate();
+
+  // Redirect to dashboard on successful login
+  useEffect(() => {
+    if (state.success) {
+      navigate("/");
+    }
+  }, [state.success, navigate]);
 
   return (
     <form action={formAction} className="space-y-5">

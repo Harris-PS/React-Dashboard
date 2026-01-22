@@ -1,13 +1,19 @@
 export async function loginAction(
-  prevState: { error: string | null },
+  prevState: { error: string | null; success?: boolean },
   formData: FormData
 ) {
-  const email = formData.get("email");
-  const password = formData.get("password");
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
 
-  if (email !== "test@gmail.com" || password !== "123456") {
-    return { error: "Invalid credentials" };
+  // Import is done dynamically to avoid issues with server actions
+  const { useAuthStore } = await import("../store/authStore");
+  const login = useAuthStore.getState().login;
+
+  const success = login(email, password);
+
+  if (!success) {
+    return { error: "Invalid credentials", success: false };
   }
 
-  return { error: null };
+  return { error: null, success: true };
 }
