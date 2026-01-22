@@ -1,10 +1,9 @@
 const Sidebar = () => {
   const menuItems = [
-    { name: 'Dashboard', icon: '📊' },
     { name: 'Expenses', icon: '💸' },
-    { name: 'Wallets', icon: '👛' },
     { name: 'Statistics', icon: '📈' },
-    { name: 'Settings', icon: '⚙️' },
+    { name: 'Recent Activity', icon: '📖' },
+    { name: 'Notifications', icon: '🔔' },
   ];
 
   return (
