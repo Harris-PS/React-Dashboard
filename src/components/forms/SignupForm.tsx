@@ -12,7 +12,6 @@ export default function SignupForm() {
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
-    const _name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
