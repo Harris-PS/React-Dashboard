@@ -1,5 +1,5 @@
 export async function loginAction(
-  prevState: { error: string | null; success?: boolean },
+  _prevState: { error: string | null; success?: boolean },
   formData: FormData
 ) {
   const email = formData.get("email") as string;
