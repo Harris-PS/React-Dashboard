@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 import LoginForm from "../components/forms/LoginForm";
 import GoogleOAuthButton from "../components/auth/GoogleOAuthButton";
@@ -70,9 +70,9 @@ function Login() {
           <div className="mt-6 text-center">
             <p className="text-white/70 text-sm">
               Don't have an account?{' '}
-              <a href="#" className="text-white font-semibold hover:underline transition-all">
+              <Link to="/signup" className="text-white font-semibold hover:underline transition-all">
                 Sign up
-              </a>
+              </Link>
             </p>
           </div>
 

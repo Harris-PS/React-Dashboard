@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
+import Signup from './pages/Signup'
 import ProtectedRoute from './components/auth/ProtectedRoute'
 import { useAuthStore } from './store/authStore'
 
@@ -25,6 +26,7 @@ function AppContent() {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );
